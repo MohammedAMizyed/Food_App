@@ -9,6 +9,7 @@
 }
 body {
   font-family: "Cairo", sans-serif;
+  background-color: black;
 }
 .secondaryFont {
   font-family: "Permanent Marker", cursive;

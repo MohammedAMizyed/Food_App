@@ -13,7 +13,7 @@ export default function Landing() {
         <h1 className="secondaryFont lg:text-[86px] text-[50px] sm:w-[700px] lg:w-[1200px] text-center font-bold text-white">
           Crafting your Exceptional Dining Reservations
         </h1>
-        <h2 className="text-white lg:max-w-[863px] sm:w-[550px] font-medium text-[25px] text-center m-auto">
+        <h2 className="text-white lg:w-[963px] sm:w-[550px] font-medium text-[25px] text-center m-auto">
           Reservation is a step into a world of gastronomic wonder. Reserve your
           table today and let us paint your culinary dreams into reality.
         </h2>
