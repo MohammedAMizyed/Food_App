@@ -77,16 +77,12 @@ export default function Shope() {
         </div>
       </div>
       <div className="mt-[500px] flex flex-wrap items-center justify-center gap-5 ">
-        <Card price="150 EG" rated="4.5" title="Pork Chop with Apple Chutney" />{" "}
-        <Card price="150 EG" rated="4.5" title="Pork Chop with Apple Chutney" />{" "}
-        <Card price="150 EG" rated="4.5" title="Pork Chop with Apple Chutney" />{" "}
-        <Card price="150 EG" rated="4.5" title="Pork Chop with Apple Chutney" />{" "}
-        <Card price="150 EG" rated="4.5" title="Pork Chop with Apple Chutney" />{" "}
-        <Card
-          price="150 EG"
-          rated="4.5"
-          title="Pork Chop with Apple Chutney"
-        />{" "}
+        <Card title="Pork Chop with Apple Chutney" />{" "}
+        <Card title="Pork Chop with Apple Chutney" />{" "}
+        <Card title="Pork Chop with Apple Chutney" />{" "}
+        <Card title="Pork Chop with Apple Chutney" />{" "}
+        <Card title="Pork Chop with Apple Chutney" />{" "}
+        <Card title="Pork Chop with Apple Chutney" />{" "}
       </div>
     </div>
   )
