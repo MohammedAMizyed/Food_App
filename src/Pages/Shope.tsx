@@ -2,7 +2,17 @@ import { Link } from "react-router-dom"
 import background from "../assets/747ba988e9e46d6503b1af4251a66afb588478fb.jpg"
 import backgroundImg from "../assets/background.png"
 import Card from "@/Components/Card"
+import { useCategories } from "@/Hooks/useCategories"
+import { useState } from "react"
+import { cn } from "@/lib/utils"
+import { useCategorySearch } from "@/Hooks/useCategorySearch"
+import { FaCheck } from "react-icons/fa"
+import { Loader2 } from "lucide-react"
+
 export default function Shope() {
+  const { data, status: statusOfCategories } = useCategories()
+  const [selected, setSelected] = useState("Beef")
+  const { data: meals, status } = useCategorySearch(selected)
   return (
     <div className="">
       <div className="relative">
@@ -32,57 +42,66 @@ export default function Shope() {
               SHOP BY CATEGORY
             </h2>
           </div>
-          <div className="mb-25 flex  justify-center items-center gap-15 ">
-            <div className="flex flex-col justify-center items-center gap-5">
-              <img
-                className="w-35 h-35 object-cover rounded-[50%] border-4 "
-                src={background}
-                alt=""
-              />
-              <h3 className="text-white text-[24px] font-semibold">
-                Vegetarian
-              </h3>
-            </div>{" "}
-            <div className="flex flex-col justify-center items-center gap-5">
-              <img
-                className="w-35 h-35 object-cover rounded-[50%] border-4 "
-                src={background}
-                alt=""
-              />
-              <h3 className="text-white text-[24px] font-semibold">
-                Vegetarian
-              </h3>
-            </div>{" "}
-            <div className="flex flex-col justify-center items-center gap-5">
-              <img
-                className="w-35 h-35 object-cover rounded-[50%] border-4 "
-                src={background}
-                alt=""
-              />
-              <h3 className="text-white text-[24px] font-semibold">
-                Vegetarian
-              </h3>
-            </div>
-            <div className="flex flex-col justify-center items-center gap-5">
-              <img
-                className="w-35 h-35 object-cover rounded-[50%] border-4 "
-                src={background}
-                alt=""
-              />
-              <h3 className="text-white text-[24px] font-semibold">
-                Vegetarian
-              </h3>
-            </div>
+          <div className="mb-25 flex  justify-center items-center gap-5 ">
+            {data?.categories.slice(0, 7).map((item) => {
+              return (
+                <div
+                  onClick={() => {
+                    setSelected(item.strCategory)
+                  }}
+                  key={item.idCategory}
+                  className="flex flex-col justify-center items-center gap-5"
+                >
+                  <div className="relative">
+                    <img
+                      className={cn(
+                        "cursor-pointer w-35 h-35 object-cover rounded-[50%] border-4 ",
+                        selected === item.strCategory
+                          ? "border-red-500"
+                          : "border-white",
+                      )}
+                      src={item.strCategoryThumb}
+                      alt=""
+                    />
+
+                    {selected === item.strCategory && (
+                      <div className="absolute flex justify-center items-center  text-white bg-red-500 top-0 right-0 rounded-[50%] h-[35px] w-[35px]">
+                        <FaCheck />
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="text-white text-[24px] font-semibold">
+                    {item.strCategory}
+                  </h3>
+                </div>
+              )
+            })}
+            {statusOfCategories === "pending" && (
+              <div className="text-white text-4xl flex justify-center items-center ">
+                <Loader2 className="animate-spin text-5xl m-auto"></Loader2>
+              </div>
+            )}
           </div>
         </div>
       </div>
-      <div className="mt-[500px] flex flex-wrap items-center justify-center gap-5 ">
-        <Card title="Pork Chop with Apple Chutney" />{" "}
-        <Card title="Pork Chop with Apple Chutney" />{" "}
-        <Card title="Pork Chop with Apple Chutney" />{" "}
-        <Card title="Pork Chop with Apple Chutney" />{" "}
-        <Card title="Pork Chop with Apple Chutney" />{" "}
-        <Card title="Pork Chop with Apple Chutney" />{" "}
+      <div className="mt-[500px] flex flex-wrap items-center justify-start gap-5 ">
+        {meals?.meals.map((item) => {
+          return (
+            <div className="flex-[24%]">
+              <Card
+                key={item.idMeal}
+                title={item.strMeal}
+                img={item.strMealThumb}
+                id={item.idMeal}
+              />
+            </div>
+          )
+        })}
+        {status === "pending" && (
+          <div className="text-white text-4xl flex justify-center items-center ">
+            <Loader2 className="animate-spin text-5xl m-auto"></Loader2>
+          </div>
+        )}
       </div>
     </div>
   )

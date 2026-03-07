@@ -5,6 +5,8 @@ import Shope from "./Pages/Shope"
 import Contact from "./Pages/Contact"
 import Layout from "./Components/layout/layout"
 import Meal from "./Pages/Meal"
+import Cart from "./Pages/Cart"
+import Favorite from "./Pages/Favorite"
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route element={<Shope />} path="/shope" />
           <Route element={<Contact />} path="/contact" />
           <Route element={<Meal />} path="/meal/:id" />
+          <Route element={<Cart />} path="/cart" />
+          <Route element={<Favorite />} path="/favorite" />
         </Route>
       </Routes>
     </>

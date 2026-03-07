@@ -1,43 +1,61 @@
 import { CiCircleCheck } from "react-icons/ci"
 import { Button } from "../Components/ui/button"
-import { FaStar } from "react-icons/fa"
+import { Link } from "react-router-dom"
+import { FaHeart } from "react-icons/fa6"
+import { cn } from "@/lib/utils"
+import { useState } from "react"
 
 type Props = {
   title: string
   img?: string
   category?: string
   from?: string
+  id?: string
 }
-export default function Card({
-  category,
-
-  title,
-  img,
-  from,
-}: Props) {
+export default function Card({ category, id, title, img, from }: Props) {
+  const [isFavorite, setIsFavorite] = useState<boolean>(false)
   return (
     <div className=" bg-[#1D1D1D] p-2 select-none rounded-[16px]">
-      <img
-        className="rounded-[16px] h-[255px] w-full max-w-[351px] object-cover"
-        src={img}
-        alt="foodImg"
-      />
+      <div className="relative">
+        <img
+          className="rounded-[16px] h-[255px] w-full max-w-[351px] object-cover"
+          src={img}
+          alt="foodImg"
+        />
+        <div
+          onClick={() => {
+            setIsFavorite(!isFavorite)
+          }}
+          className={cn(
+            "cursor-pointer absolute top-4 left-4 flex justify-center items-center text-[20px] w-[50px] h-[50px]  rounded-[50%] border-[3px] ",
+            isFavorite
+              ? "bg-red-500 text-white border-red-500"
+              : "bg-white border-[#D6282880]  text-red-500",
+          )}
+        >
+          <FaHeart />
+        </div>
+      </div>
       <div>
         <div className=" flex py-2 justify-between items-center">
-          <h3 className="text-white text-[24px] font-semibold">{title}</h3>
-          <div className=" flex items-center justify-center gap-2 ">
-            <FaStar className="text-[#FFD700] text-2xl" />
-            <FaStar className="text-[#FFD700] text-2xl" />
-            <FaStar className="text-[#FFD700] text-2xl" />
-          </div>
+          <h3 className="text-white text-[24px] font-semibold max-w-[350px] flex-wrap">
+            {title}
+          </h3>
+          <Link to={`/meal/${id}`}>
+            <span className="hover:text-red-400 duration-200 text-white underline cursor-pointer mr-2">
+              See More
+            </span>
+          </Link>
         </div>
         <hr className=" text-[#343434]" />
-        <div className="flex justify-between my-2 items-center">
-          <h3 className="text-[#D62828] text-[17px] font-semibold">
-            <span className="text-white">Category: </span>
-            {category}
-          </h3>
-        </div>
+        {category && (
+          <div className="flex justify-between my-2 items-center">
+            <h3 className="text-[#D62828] text-[17px] font-semibold">
+              <span className="text-white">Category: </span>
+              {category}
+            </h3>
+          </div>
+        )}
         <div className="text-white flex items-center gap-4">
           <CiCircleCheck className="text-xl text-red-500" />
           From {from}

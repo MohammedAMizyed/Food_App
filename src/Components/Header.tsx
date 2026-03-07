@@ -38,18 +38,22 @@ export default function Header() {
         })}
       </ul>
       <div className="flex justify-end-safe  items-center gap-3">
-        <div className="relative">
-          <FaHeart className=" text-white  border-2 rounded-[50%] p-1 text-4xl cursor-pointer" />
-          <span className="absolute bg-[#D62828] rounded-[50%]  -top-2 -right-2 text-white text-center h-[25px] w-[25px]">
-            0
-          </span>
-        </div>
-        <div className="relative">
-          <IoCartOutline className="text-white border-2 rounded-[50%] p-1 text-4xl cursor-pointer" />
-          <span className="absolute bg-[#D62828] rounded-[50%]  -top-2 -right-2 text-white text-center h-[25px] w-[25px]">
-            0
-          </span>
-        </div>
+        <Link to={"/favorite"}>
+          <div className="relative">
+            <FaHeart className=" text-white  border-2 rounded-[50%] p-1 text-4xl cursor-pointer" />
+            <span className="absolute bg-[#D62828] rounded-[50%]  -top-2 -right-2 text-white text-center h-[25px] w-[25px]">
+              0
+            </span>
+          </div>
+        </Link>
+        <Link to={"/cart"}>
+          <div className="relative">
+            <IoCartOutline className="text-white border-2 rounded-[50%] p-1 text-4xl cursor-pointer" />
+            <span className="absolute bg-[#D62828] rounded-[50%]  -top-2 -right-2 text-white text-center h-[25px] w-[25px]">
+              0
+            </span>
+          </div>
+        </Link>
       </div>
     </div>
   )

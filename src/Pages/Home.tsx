@@ -21,7 +21,8 @@ export default function Home() {
         </div>
       </div>
       <div className="mt-[250px]">
-        <CarouselFood />
+        <CarouselFood search="chicken" />
+        <CarouselFood search="cake" />
       </div>
     </div>
   )

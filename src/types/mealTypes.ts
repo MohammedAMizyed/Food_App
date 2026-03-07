@@ -1,5 +1,6 @@
 // types/mealTypes.ts
 export interface Meal {
+  meals: any
   idMeal: string
   strMeal: string
   strMealAlternate: string | null

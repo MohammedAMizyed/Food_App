@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import background from "../assets/747ba988e9e46d6503b1af4251a66afb588478fb.jpg"
 import { useMeal } from "@/Hooks/useMeal"
 import { useParams } from "react-router-dom"
+import { FaHeart } from "react-icons/fa6"
+import { cn } from "@/lib/utils"
 export default function food() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { id } = useParams<{ id: string }>()
@@ -36,16 +38,28 @@ export default function food() {
           </div>
         </div>
       </div>
-      <div className="container  flex justify-center items-center gap-10">
-        <img
-          className="select-none object-cover rounded-xl lg:max-h-[500px] w-full "
-          src={data?.strMealThumb}
-          alt=""
-        />
-        <div className=" text-white">
-          <h1 className="text-[36px] font-normal  text-white">
-            {data?.strMeal}
-          </h1>
+      <div className="container bg-[#1d1d1d] py-5  flex justify-center items-center gap-10">
+        <div className="relative flex-1/3">
+          <img
+            className="select-none object-cover rounded-xl lg:max-h-[500px] w-full "
+            src={data?.strMealThumb}
+            alt=""
+          />
+          <div
+            className={cn(
+              "cursor-pointer absolute top-4 left-4 flex justify-center items-center text-[20px] w-[50px] h-[50px]  rounded-[50%] border-[3px] ",
+              "bg-red-500 text-white border-red-500",
+            )}
+          >
+            <FaHeart />
+          </div>
+        </div>
+        <div className=" text-white flex-2/3">
+          <div className="flex items-center gap-5">
+            <h1 className="text-[36px] font-normal  text-white">
+              {data?.strMeal}
+            </h1>
+          </div>
           <h2 className="text-[20px] font-normal text-white">
             {data?.strInstructions}
           </h2>
@@ -53,7 +67,7 @@ export default function food() {
             From:{" "}
             <span className="text-red-600 font-bold">{data?.strArea}</span>
           </h3>
-          <div className="underline">
+          <div className="underline hover:text-red-500 duration-200">
             {" "}
             <a target="_blank" href={data?.strSource}>
               Go To The Source
