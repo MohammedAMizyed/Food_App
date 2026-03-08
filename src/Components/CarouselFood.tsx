@@ -19,14 +19,12 @@ export default function CarouselFood({ search }: { search: string }) {
           {data?.meals?.map((item, index: number) => {
             return (
               <CarouselItem key={index} className="basis-[25%]">
-                <Link to={`/meal/${item.idMeal}`}>
-                  <Card
-                    img={item.strMealThumb}
-                    title={item.strMeal}
-                    category={item.strCategory}
-                    from={item.strArea}
-                  />
-                </Link>
+                <Card
+                  img={item.strMealThumb}
+                  title={item.strMeal}
+                  category={item.strCategory}
+                  from={item.strArea}
+                />
               </CarouselItem>
             )
           })}

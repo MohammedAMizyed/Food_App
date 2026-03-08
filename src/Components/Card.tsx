@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { FaHeart } from "react-icons/fa6"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
-
+import { useCart } from "@/store/useCart"
 type Props = {
   title: string
   img?: string
@@ -13,6 +13,7 @@ type Props = {
   id?: string
 }
 export default function Card({ category, id, title, img, from }: Props) {
+  const { addToCart } = useCart()
   const [isFavorite, setIsFavorite] = useState<boolean>(false)
   return (
     <div className=" bg-[#1D1D1D] p-2 select-none rounded-[16px]">
@@ -64,7 +65,18 @@ export default function Card({ category, id, title, img, from }: Props) {
           <CiCircleCheck className="text-xl text-red-500" />4 Pieces
         </div>
       </div>
-      <Button className="w-full my-5 hover:bg-black cursor-pointer bg-none rounded-[14px] text-white border-2 border-white">
+      <Button
+        onClick={() => {
+          addToCart({
+            title,
+            category,
+            from,
+            img,
+            id: id!,
+          })
+        }}
+        className="w-full my-5 hover:bg-black cursor-pointer bg-none rounded-[14px] text-white border-2 border-white"
+      >
         Add To Cart
       </Button>
     </div>

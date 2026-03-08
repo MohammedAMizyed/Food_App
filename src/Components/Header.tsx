@@ -5,6 +5,7 @@ import { FaHeart } from "react-icons/fa6"
 import { useLocation } from "react-router"
 import { cn } from "../lib/cn"
 import { Link } from "react-router-dom"
+import { useCart } from "@/store/useCart"
 export default function Header() {
   const links = [
     { id: 1, name: "HOME", path: "/home" },
@@ -13,6 +14,8 @@ export default function Header() {
     { id: 4, name: "CONTACT", path: "/contact" },
   ]
   const location = useLocation()
+  const { cart } = useCart()
+
   return (
     <div className="container relative -mb-[83px] mt-3 z-50 flex justify-between items-center">
       <Link to={"/home"}>
@@ -50,7 +53,7 @@ export default function Header() {
           <div className="relative">
             <IoCartOutline className="text-white border-2 rounded-[50%] p-1 text-4xl cursor-pointer" />
             <span className="absolute bg-[#D62828] rounded-[50%]  -top-2 -right-2 text-white text-center h-[25px] w-[25px]">
-              0
+              {cart.length}
             </span>
           </div>
         </Link>
