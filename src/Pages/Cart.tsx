@@ -3,9 +3,10 @@ import background from "../assets/747ba988e9e46d6503b1af4251a66afb588478fb.jpg"
 
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/store/useCart"
+import { cn } from "@/lib/utils"
 
 export default function Cart() {
-  const { cart, removeFromCart } = useCart()
+  const { cart, removeFromCart, decreaseQuantity, increaseQuantity } = useCart()
 
   return (
     <div className="">
@@ -44,36 +45,77 @@ export default function Cart() {
               <span className="text-red-500 font-bold">{cart.length}</span>{" "}
               Items Is Your Cart
             </h1>
-            <div>
-              {cart.map((item) => {
-                return (
-                  <div
-                    key={item.id}
-                    className="flex gap-5 justify-center items-center"
-                  >
-                    <img
-                      className="object-cover w-[157px] h-[109px] rounded-2xl  "
-                      src={item.img}
-                      alt=""
-                    />
-                    <div>
-                      <h2 className="text-[20px] font-semibold">
-                        {item.title}
-                      </h2>
-                      <h3>
-                        From:{" "}
-                        <span className="font-bold text-red-500">
-                          {item.from}
-                        </span>{" "}
-                      </h3>
-                      <h4>{item.quantity}</h4>
-                      <Button onClick={() => removeFromCart(item.id)}>
-                        Remove Meal
-                      </Button>
+            <div className="flex justify-between items-start gap-50">
+              <div className="flex-1/2">
+                {cart.map((item) => {
+                  return (
+                    <div
+                      key={item.id}
+                      className="flex mb-5 gap-5 justify-start items-center"
+                    >
+                      <img
+                        className="select-none object-cover w-[167px] h-[119px] rounded-2xl  "
+                        src={item.img}
+                        alt=""
+                      />
+                      <div className="flex-1">
+                        <h2 className="text-start text-[20px] font-semibold">
+                          {item.title}
+                        </h2>
+                        <h3 className="text-start my-2">
+                          From:{" "}
+                          <span className="font-bold text-red-500">
+                            {item.from}
+                          </span>{" "}
+                        </h3>
+                        <div className="flex justify-between items-center">
+                          <Button
+                            className="cursor-pointer"
+                            variant={"destructive"}
+                            onClick={() => removeFromCart(item.id)}
+                          >
+                            Remove Meal
+                          </Button>
+                          <div className="flex items-center gap-3">
+                            Quantity:
+                            <div className="flex items-center justify-center gap-2">
+                              <Button
+                                disabled={item.quantity === 0}
+                                onClick={() => decreaseQuantity(item.id)}
+                                className=" text-4xl cursor-pointer"
+                              >
+                                -
+                              </Button>
+                              <h4
+                                className={cn(
+                                  "text-2xl font-bold",
+                                  item.quantity == 0
+                                    ? "text-red-500"
+                                    : "text-white",
+                                )}
+                              >
+                                {item.quantity}
+                              </h4>
+                              <Button
+                                onClick={() => increaseQuantity(item.id)}
+                                className="text-4xl cursor-pointer "
+                              >
+                                +
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
+              <div className="flex-3/7">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
+                officiis excepturi tenetur sapiente quae. Facere unde dolores
+                inventore corrupti voluptate aliquid nulla, velit quis ratione
+                expedita quibusdam molestias quia nesciunt!
+              </div>
             </div>
           </div>
         )}
