@@ -5,6 +5,7 @@ import { FaHeart } from "react-icons/fa6"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { useCart } from "@/store/useCart"
+import { useFavorite } from "@/store/useFavorite"
 type Props = {
   title: string
   img?: string
@@ -14,7 +15,7 @@ type Props = {
 }
 export default function Card({ category, id, title, img, from }: Props) {
   const { addToCart } = useCart()
-  const [isFavorite, setIsFavorite] = useState<boolean>(false)
+  const { addToFavorite, favoriteList } = useFavorite()
   return (
     <div className=" bg-[#1D1D1D] p-2 select-none rounded-[16px]">
       <div className="relative">
@@ -25,11 +26,17 @@ export default function Card({ category, id, title, img, from }: Props) {
         />
         <div
           onClick={() => {
-            setIsFavorite(!isFavorite)
+            addToFavorite({
+              img,
+              id: id!,
+              title,
+              category,
+              from,
+            })
           }}
           className={cn(
             "cursor-pointer absolute top-4 left-4 flex justify-center items-center text-[20px] w-[50px] h-[50px]  rounded-[50%] border-[3px] ",
-            isFavorite
+            favoriteList.find((meal) => meal.id === id)
               ? "bg-red-500 text-white border-red-500"
               : "bg-white border-[#D6282880]  text-red-500",
           )}

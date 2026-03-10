@@ -4,6 +4,12 @@ import background from "../assets/747ba988e9e46d6503b1af4251a66afb588478fb.jpg"
 import { Button } from "@/components/ui/button"
 import { useCart } from "@/store/useCart"
 import { cn } from "@/lib/utils"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../Components/ui/tooltip"
 
 export default function Cart() {
   const { cart, removeFromCart, decreaseQuantity, increaseQuantity } = useCart()
@@ -53,11 +59,23 @@ export default function Cart() {
                       key={item.id}
                       className="flex mb-5 gap-5 justify-start items-center"
                     >
-                      <img
-                        className="select-none object-cover w-[167px] h-[119px] rounded-2xl  "
-                        src={item.img}
-                        alt=""
-                      />
+                      <Link to={`/meal/${item.id}`}>
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger>
+                              {" "}
+                              <img
+                                className="cursor-pointer select-none object-cover w-[167px] h-[119px] rounded-2xl  "
+                                src={item.img}
+                                alt=""
+                              />
+                            </TooltipTrigger>
+                            <TooltipContent className="text-black bg-white">
+                              <p className="">Go To Meal Information</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </Link>
                       <div className="flex-1">
                         <h2 className="text-start text-[20px] font-semibold">
                           {item.title}

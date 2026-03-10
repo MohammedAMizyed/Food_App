@@ -5,7 +5,6 @@ import {
 } from "../Components/ui/carousel"
 import Card from "../Components/Card"
 import { useFood } from "@/Hooks/useFood"
-import { Link } from "react-router-dom"
 import { Loader2 } from "lucide-react"
 
 export default function CarouselFood({ search }: { search: string }) {
@@ -20,6 +19,7 @@ export default function CarouselFood({ search }: { search: string }) {
             return (
               <CarouselItem key={index} className="basis-[25%]">
                 <Card
+                  id={item.idMeal}
                   img={item.strMealThumb}
                   title={item.strMeal}
                   category={item.strCategory}
