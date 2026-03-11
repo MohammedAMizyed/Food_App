@@ -1,9 +1,5 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "../Components/ui/carousel"
-import Card from "../Components/Card"
+import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
+import Card from "./Card"
 import { useFood } from "@/Hooks/useFood"
 import { Loader2 } from "lucide-react"
 

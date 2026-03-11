@@ -3,7 +3,6 @@ import background from "../assets/747ba988e9e46d6503b1af4251a66afb588478fb.jpg"
 
 import { Button } from "@/components/ui/button"
 import { useFavorite } from "@/store/useFavorite"
-import Card from "@/Components/Card"
 export default function Favorite() {
   const { favoriteList, removeFromFavorite } = useFavorite()
   return (

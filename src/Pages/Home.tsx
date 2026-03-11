@@ -1,5 +1,5 @@
-import CarouselFood from "@/Components/CarouselFood"
-import Landing from "../Components/Landing"
+import CarouselFood from "@/components/CarouselFood"
+import Landing from "../components/Landing"
 import background from "../assets/background.png"
 export default function Home() {
   return (

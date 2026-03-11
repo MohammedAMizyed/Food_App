@@ -1,9 +1,8 @@
 import { CiCircleCheck } from "react-icons/ci"
-import { Button } from "../Components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 import { FaHeart } from "react-icons/fa6"
 import { cn } from "@/lib/utils"
-import { useState } from "react"
 import { useCart } from "@/store/useCart"
 import { useFavorite } from "@/store/useFavorite"
 type Props = {

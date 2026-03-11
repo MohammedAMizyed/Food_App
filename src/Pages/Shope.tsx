@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import background from "../assets/747ba988e9e46d6503b1af4251a66afb588478fb.jpg"
 import backgroundImg from "../assets/background.png"
-import Card from "@/Components/Card"
+import Card from "@/components/Card"
 import { useCategories } from "@/Hooks/useCategories"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
@@ -87,9 +87,8 @@ export default function Shope() {
       <div className="mt-[500px] flex flex-wrap items-center justify-start gap-5 ">
         {meals?.meals.map((item) => {
           return (
-            <div className="flex-[24%]">
+            <div key={item.idMeal} className="flex-[24%]">
               <Card
-                key={item.idMeal}
                 title={item.strMeal}
                 img={item.strMealThumb}
                 id={item.idMeal}

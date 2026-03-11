@@ -1,5 +1,5 @@
 import landingImg from "../assets/41e8bda7a34a0afed94adb44b40d68910d5ddcf0.jpg"
-import { Button } from "./ui/button"
+import { Button } from "@/components/ui/button"
 export default function Landing() {
   return (
     <div className="relative">

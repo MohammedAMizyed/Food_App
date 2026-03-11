@@ -3,7 +3,7 @@ import { IoCartOutline } from "react-icons/io5"
 import { FaHeart } from "react-icons/fa6"
 
 import { useLocation } from "react-router"
-import { cn } from "../lib/cn"
+import { cn } from "../lib/utils"
 import { Link } from "react-router-dom"
 import { useCart } from "@/store/useCart"
 import { useFavorite } from "@/store/useFavorite"
@@ -12,7 +12,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../Components/ui/tooltip"
+} from "@/components/ui/tooltip"
 
 export default function Header() {
   const links = [

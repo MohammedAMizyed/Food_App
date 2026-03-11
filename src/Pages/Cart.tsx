@@ -9,7 +9,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../Components/ui/tooltip"
+} from "../components/ui/tooltip"
 
 export default function Cart() {
   const { cart, removeFromCart, decreaseQuantity, increaseQuantity } = useCart()
