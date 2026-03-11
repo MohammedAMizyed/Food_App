@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router"
-import Home from "./Pages/Home"
-import About from "./Pages/About"
-import Shope from "./Pages/Shope"
-import Contact from "./Pages/Contact"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Shope from "./pages/Shope"
+import Contact from "./pages/Contact"
 import Layout from "./components/layout/layout"
-import Meal from "./Pages/Meal"
-import Cart from "./Pages/Cart"
-import Favorite from "./Pages/Favorite"
+import Meal from "./pages/Meal"
+import Cart from "./pages/Cart"
+import Favorite from "./pages/Favorite"
 
 function App() {
   return (

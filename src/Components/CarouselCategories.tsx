@@ -1,6 +1,6 @@
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import { cn } from "@/lib/utils"
-import { useCategories } from "@/Hooks/useCategories"
+import { useCategories } from "@/hooks/useCategories"
 import { FaCheck } from "react-icons/fa6"
 
 export default function CarouselCategories({

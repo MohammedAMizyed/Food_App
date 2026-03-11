@@ -1,6 +1,6 @@
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel"
 import Card from "./Card"
-import { useFood } from "@/Hooks/useFood"
+import { useFood } from "@/hooks/useFood"
 import { Loader2 } from "lucide-react"
 
 export default function CarouselFood({ search }: { search: string }) {
