@@ -31,14 +31,16 @@ export default function food() {
       <div>
         <div className=" mt-10 w-full  text-white ">
           <div className="text-center mb-20">
-            <h3 className="text-[20px] font-medium ">{data?.strCategory}</h3>
-            <h2 className="secondaryFont text-[54px] font-medium">
+            <h3 className=" text-[18px] sm:text-[20px] font-medium ">
+              {data?.strCategory}
+            </h3>
+            <h2 className="secondaryFont sm:text-[54px] text-[30px] font-medium">
               {data?.strMeal}
             </h2>
           </div>
         </div>
       </div>
-      <div className="container bg-[#1d1d1d] py-5  flex justify-center items-center gap-10">
+      <div className="container bg-[#1d1d1d] py-5  flex sm:flex-row flex-col justify-center items-center gap-10">
         <div className="relative flex-1/3">
           <img
             className="select-none object-cover rounded-xl lg:max-h-[500px] w-full "
