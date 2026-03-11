@@ -45,11 +45,11 @@ export default function Cart() {
             </Link>
           </div>
         ) : (
-          <div className="text-center text-white  my-30">
-            <h1 className="text-[36px] font-medium">
+          <div className="sm:text-center text-white  sm:my-30">
+            <h1 className="my-5  sm:text-[36px] text-[20px] font-medium">
               There IS{" "}
               <span className="text-red-500 font-bold">{cart.length}</span>{" "}
-              Items Is Your Cart
+              Meals Is Your Cart
             </h1>
             <div className="flex justify-between items-start gap-50">
               <div className="flex-1/2">
@@ -57,7 +57,7 @@ export default function Cart() {
                   return (
                     <div
                       key={item.id}
-                      className="flex mb-5 gap-5 justify-start items-center"
+                      className="bg-[#1d1d1d] p-2 rounded-2xl flex mb-5 gap-5 justify-start items-center"
                     >
                       <Link to={`/meal/${item.id}`}>
                         <TooltipProvider>
@@ -77,36 +77,36 @@ export default function Cart() {
                         </TooltipProvider>
                       </Link>
                       <div className="flex-1">
-                        <h2 className="text-start text-[20px] font-semibold">
+                        <h2 className="text-start text-[18px] sm:text-[20px] font-semibold">
                           {item.title}
                         </h2>
-                        <h3 className="text-start my-2">
+                        <h3 className="hidden sm:block text-start my-2">
                           From:{" "}
                           <span className="font-bold text-red-500">
                             {item.from}
                           </span>{" "}
                         </h3>
-                        <div className="flex justify-between items-center">
+                        <div className="flex sm:flex-row flex-col justify-between items-center">
                           <Button
-                            className="cursor-pointer"
+                            className="my-3 cursor-pointer"
                             variant={"destructive"}
                             onClick={() => removeFromCart(item.id)}
                           >
                             Remove Meal
                           </Button>
-                          <div className="flex items-center gap-3">
-                            Quantity:
+                          <div className="flex flex-col  items-center gap-3">
+                            <span className=" hidden sm:flex">Quantity:</span>
                             <div className="flex items-center justify-center gap-2">
                               <Button
                                 disabled={item.quantity === 0}
                                 onClick={() => decreaseQuantity(item.id)}
-                                className=" text-4xl cursor-pointer"
+                                className="text-2xl sm:text-4xl cursor-pointer"
                               >
                                 -
                               </Button>
                               <h4
                                 className={cn(
-                                  "text-2xl font-bold",
+                                  "sm:text-2xl font-bold",
                                   item.quantity == 0
                                     ? "text-red-500"
                                     : "text-white",
@@ -116,7 +116,7 @@ export default function Cart() {
                               </h4>
                               <Button
                                 onClick={() => increaseQuantity(item.id)}
-                                className="text-4xl cursor-pointer "
+                                className=" text-2xl sm:text-4xl cursor-pointer "
                               >
                                 +
                               </Button>
@@ -128,7 +128,7 @@ export default function Cart() {
                   )
                 })}
               </div>
-              <div className="flex-3/7">
+              <div className=" hidden sm:flex-3/7">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Est
                 officiis excepturi tenetur sapiente quae. Facere unde dolores
                 inventore corrupti voluptate aliquid nulla, velit quis ratione

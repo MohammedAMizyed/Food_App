@@ -13,7 +13,10 @@ export default function CarouselFood({ search }: { search: string }) {
         <CarouselContent>
           {data?.meals?.map((item, index: number) => {
             return (
-              <CarouselItem key={index} className="basis-[25%]">
+              <CarouselItem
+                key={index}
+                className="basis-full sm:basis-[33%] lg:basis-[25%]"
+              >
                 <Card
                   id={item.idMeal}
                   img={item.strMealThumb}

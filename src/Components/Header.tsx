@@ -1,7 +1,7 @@
 import logo from "../assets/logo-small-inverse 1.svg"
 import { IoCartOutline } from "react-icons/io5"
 import { FaHeart } from "react-icons/fa6"
-
+import { VscListSelection } from "react-icons/vsc"
 import { useLocation } from "react-router"
 import { cn } from "../lib/utils"
 import { Link } from "react-router-dom"
@@ -13,7 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 export default function Header() {
   const links = [
     { id: 1, name: "HOME", path: "/home" },
@@ -33,7 +33,11 @@ export default function Header() {
           <Tooltip>
             <TooltipTrigger>
               {" "}
-              <img className="cursor-pointer " src={logo} alt="" />
+              <img
+                className="sm:w-full w-[50px] cursor-pointer "
+                src={logo}
+                alt=""
+              />
             </TooltipTrigger>
             <TooltipContent className="text-black bg-white">
               <p>Go To Home Page</p>
@@ -41,7 +45,47 @@ export default function Header() {
           </Tooltip>
         </TooltipProvider>
       </Link>
-      <ul className="flex justify-center items-center gap-7">
+      <Sheet>
+        <SheetTrigger asChild>
+          <div className="sm:hidden block text-white cursor-pointer">
+            <VscListSelection className="text-3xl" />
+          </div>
+        </SheetTrigger>
+
+        <SheetContent
+          side="right"
+          className="bg-black text-white text-center w-[200px]"
+        >
+          <div className="flex flex-col gap-6 mt-10">
+            {links.map((link) => (
+              <Link
+                key={link.id}
+                to={link.path}
+                className="text-xl font-medium"
+              >
+                {link.name}
+              </Link>
+            ))}
+
+            {/* FAVORITE */}
+            <Link to="/favorite">
+              <div className="flex justify-center items-center gap-3">
+                <FaHeart className="text-2xl" />
+                <span>Favorite ({favoriteList.length})</span>
+              </div>
+            </Link>
+
+            {/* CART */}
+            <Link to="/cart">
+              <div className="flex justify-center items-center gap-3">
+                <IoCartOutline className="text-2xl" />
+                <span>Cart ({cart.length})</span>
+              </div>
+            </Link>
+          </div>
+        </SheetContent>
+      </Sheet>
+      <ul className="hidden sm:flex justify-center items-center gap-7">
         {links.map((link) => {
           return (
             <Link to={link.name.toLowerCase()}>
@@ -71,7 +115,7 @@ export default function Header() {
           )
         })}
       </ul>
-      <div className="flex justify-end-safe  items-center gap-3">
+      <div className="hidden sm:flex justify-end-safe  items-center gap-3">
         <Link to={"/favorite"}>
           <TooltipProvider>
             <Tooltip>

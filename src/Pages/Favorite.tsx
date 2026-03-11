@@ -20,7 +20,7 @@ export default function Favorite() {
           <span className="text-[#FFFFFF80]"> FAVORITE</span>
         </div>
       </div>
-      <div className="container    text-white ">
+      <div className="container mb-5    text-white ">
         {favoriteList.length === 0 ? (
           <div className="text-center my-30">
             <h2 className="secondaryFont text-[54px] font-medium">
@@ -39,7 +39,10 @@ export default function Favorite() {
           <div className="mt-10 flex flex-wrap items-center justify-start gap-5 ">
             {favoriteList.map((meal) => {
               return (
-                <div key={meal.id} className="basis-[24%]">
+                <div
+                  key={meal.id}
+                  className=" bg-[#1d1d1d] p-2 rounded-2xl basis-[100%] sm:basis-[23%]"
+                >
                   <div>
                     <img
                       className="rounded-2xl max-w-[350px] max-h-[250px] w-full h-full object-cover"
