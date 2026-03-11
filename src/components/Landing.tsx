@@ -11,7 +11,7 @@ export default function Landing() {
       />
       <div className="inset-0 absolute bg-[#000000a5]"></div>
       <div className="container absolute top-[50%] -translate-y-1/2 -translate-x-1/2 left-[50%]">
-        <h1 className="secondaryFont   lg:text-[86px] text-[30px] w-full  sm:w-[700px] lg:w-[1200px] text-center font-bold text-white">
+        <h1 className="secondaryFont   lg:text-[86px]  text-[30px] w-full  sm:w-[700px] lg:w-full lg:max-w-[1300px] text-center font-bold text-white">
           Crafting your Exceptional Dining Reservations
         </h1>
         <h2 className="text-white  lg:w-[963px] sm:w-[550px] font-medium text-[20px] text-center m-auto">
