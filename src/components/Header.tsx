@@ -26,7 +26,7 @@ export default function Header() {
   const { favoriteList } = useFavorite()
 
   return (
-    <div className="container relative -mb-[83px] mt-3 z-50 flex justify-between items-center">
+    <div className="container relative -mb-[83px] mx-auto mt-3 z-50 flex justify-between items-center">
       <Link to={"/home"}>
         <TooltipProvider>
           {" "}

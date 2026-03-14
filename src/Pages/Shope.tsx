@@ -55,7 +55,7 @@ export default function Shope() {
       <div className="mt-[500px] container flex flex-wrap items-center justify-start gap-5 ">
         {meals?.meals.map((item) => {
           return (
-            <div key={item.idMeal} className="basis-[100%] sm:flex-[23%]">
+            <div key={item.idMeal} className="basis-full sm:flex-[23%]">
               <Card
                 title={item.strMeal}
                 img={item.strMealThumb}
